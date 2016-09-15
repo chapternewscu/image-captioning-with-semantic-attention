@@ -59,7 +59,7 @@ function test.test_example4()
       checkGradients(gmod, {x, prev_c, prev_h})
 end 
 
--- not passed 
+-- passed 
 -- testing Make Output Attention
 function test.test_example5()
       local As =nn.Identity()()  -- glimpse 
