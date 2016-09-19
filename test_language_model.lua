@@ -300,7 +300,9 @@ local function sample_beam()
 
   local opt = {}
   opt.vocab_size = 10
-  opt.input_encoding_size = 4
+  opt.image_encoding_size = 4
+  opt.word_encoding_size = 4
+
   opt.rnn_size = 8
   opt.num_layers = 1
   opt.dropout = 0
@@ -308,16 +310,18 @@ local function sample_beam()
   opt.batch_size = 6
   local lm = nn.LanguageModel(opt)
 
-  local imgs = torch.randn(opt.batch_size, opt.input_encoding_size):type(dtype)
+  local imgs = torch.randn(opt.batch_size, opt.image_encoding_size):type(dtype)
+  local semantic_words = torch.LongTensor(opt.batch_size, 2):random(opt.vocab_size)
 
-  local seq_vanilla, logprobs_vanilla = lm:sample(imgs)
-  local seq, logprobs = lm:sample(imgs, {beam_size = 1})
+  local seq_vanilla, logprobs_vanilla = lm:sample({imgs, semantic_words}) 
+
+  local seq, logprobs = lm:sample({imgs, semantic_words}, {beam_size = 1})
 
   -- check some basic I/O, types, etc.
   tester:assertTensorSizeEq(seq, {opt.seq_length, opt.batch_size})
   tester:asserteq(seq:type(), 'torch.LongTensor')
   tester:assertge(torch.min(seq), 0)
-  tester:assertle(torch.max(seq), opt.vocab_size+1)
+  tester:assertle(torch.max(seq), opt.vocab_size)
 
   -- doing beam search with beam size 1 should return exactly what we had before
   print('')
@@ -329,7 +333,8 @@ local function sample_beam()
   tester:assertTensorEq(logprobs_vanilla, logprobs, 1e-6) -- logprobs too
 
   -- doing beam search with higher beam size should yield higher likelihood sequences
-  local seq2, logprobs2 = lm:sample(imgs, {beam_size = 8})
+  local seq2, logprobs2 = lm:sample({imgs, semantic_words}, {beam_size = 8})
+
   local logsum = torch.sum(logprobs, 1)
   local logsum2 = torch.sum(logprobs2, 1)
   print('')
@@ -342,19 +347,24 @@ local function sample_beam()
   print(logsum2)
 
   -- the logprobs should always be >=, since beam_search is better argmax inference
-  tester:assert(torch.all(torch.gt(logsum2, logsum)))
+  tester:assert(torch.all(torch.gt(logsum2, logsum))) 
 end
 
---lm_test.doubleApiForwardTest = forwardApiTestFactory('torch.DoubleTensor')
---lm_test.floatApiForwardTest = forwardApiTestFactory('torch.FloatTensor')
---lm_test.cudaApiForwardTest = forwardApiTestFactory('torch.CudaTensor')
-
+-- passed
+lm_test.doubleApiForwardTest = forwardApiTestFactory('torch.DoubleTensor')
+lm_test.floatApiForwardTest = forwardApiTestFactory('torch.FloatTensor')
+lm_test.cudaApiForwardTest = forwardApiTestFactory('torch.CudaTensor')
+--passed
 lm_test.gradCheck = gradCheck
 
+-- havenot tested 
+-- all the commented out method are not been tested at all
 --tests.gradCheckLM = gradCheckLM
 --tests.overfit = overfit
 --tests.sample = sample
---tests.sample_beam = sample_beam
+
+-- passed 
+lm_test.sample_beam = sample_beam
 
 tester:add(lm_test)
 tester:run()
