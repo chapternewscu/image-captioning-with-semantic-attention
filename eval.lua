@@ -4,11 +4,11 @@ require 'nngraph'
 -- exotics
 require 'loadcaffe'
 -- local imports
-local utils = require 'misc.utils'
-require 'misc.DataLoader'
-require 'misc.DataLoaderRaw'
-require 'misc.LanguageModel'
-local net_utils = require 'misc.net_utils'
+local utils = require 'misc_saver.utils'
+require 'misc_saver.DataLoader'
+require 'misc_saver.DataLoaderRaw'
+require 'misc_saver.LanguageModel'
+local net_utils = require 'misc_saver.net_utils'
 
 -------------------------------------------------------------------------------
 -- Input arguments and options
@@ -30,7 +30,7 @@ cmd:option('-dump_json', 0, 'Dump json with predictions into vis folder? (1=yes,
 cmd:option('-dump_path', 0, 'Write image paths along with predictions into vis json? (1=yes,0=no)')
 -- Sampling options
 cmd:option('-sample_max', 1, '1 = sample argmax words. 0 = sample from distributions.')
-cmd:option('-beam_size', 1, 'used when sample_max = 1, indicates number of beams in beam search. Usually 2 or 3 works well. More is not better. Set this to 1 for faster runtime but a bit worse performance.')
+cmd:option('-beam_size', 3, 'used when sample_max = 1, indicates number of beams in beam search. Usually 2 or 3 works well. More is not better. Set this to 1 for faster runtime but a bit worse performance.')
 cmd:option('-temperature', 1.0, 'temperature when sampling from distributions (i.e. when sample_max = 0). Lower = "safer" predictions.')
 -- For evaluation on a folder of images:
 cmd:option('-image_folder', '', 'If this is nonempty then will predict on the images in this folder path')
@@ -51,6 +51,10 @@ cmd:text()
 -- Basic Torch initializations
 -------------------------------------------------------------------------------
 local opt = cmd:parse(arg)
+
+-- print arguments 
+print(opt)
+
 torch.manualSeed(opt.seed)
 torch.setdefaulttensortype('torch.FloatTensor') -- for CPU
 
@@ -66,15 +70,20 @@ end
 -- Load the model checkpoint to evaluate
 -------------------------------------------------------------------------------
 assert(string.len(opt.model) > 0, 'must provide a model')
+print('loading a model start ...')
+
 local checkpoint = torch.load(opt.model)
+print('loading a model done')
+
 -- override and collect parameters
 if string.len(opt.input_h5) == 0 then opt.input_h5 = checkpoint.opt.input_h5 end
 if string.len(opt.input_json) == 0 then opt.input_json = checkpoint.opt.input_json end
 if opt.batch_size == 0 then opt.batch_size = checkpoint.opt.batch_size end
-local fetch = {'rnn_size', 'input_encoding_size', 'drop_prob_lm', 'cnn_proto', 'cnn_model', 'seq_per_img'}
+local fetch = {'rnn_size', 'image_encoding_size', 'word_encoding_size', 'drop_prob_lm', 'cnn_proto', 'cnn_model', 'seq_per_img'}
 for k,v in pairs(fetch) do 
   opt[v] = checkpoint.opt[v] -- copy over options from model
 end
+
 local vocab = checkpoint.vocab -- ix -> word mapping
 
 -------------------------------------------------------------------------------
@@ -101,6 +110,7 @@ if opt.gpuid >= 0 then for k,v in pairs(protos) do v:cuda() end end
 -------------------------------------------------------------------------------
 local function eval_split(split, evalopt)
   local verbose = utils.getopt(evalopt, 'verbose', true)
+  
   local num_images = utils.getopt(evalopt, 'num_images', true)
 
   protos.cnn:evaluate()
@@ -123,8 +133,12 @@ local function eval_split(split, evalopt)
     -- evaluate loss if we have the labels, ignore this code chunk if no labels is available 
     local loss = 0
     if data.labels then
-      local expanded_feats = protos.expander:forward(feats)
-      local logprobs = protos.lm:forward{expanded_feats, data.labels}
+        -- expand data.semantic_words 
+      local exp_attrs = protos.expander:forward(data.semantic_words):clone() 
+      local expanded_feats = protos.expander:forward(feats):clone() 
+
+      local logprobs = protos.lm:forward{expanded_feats, data.labels, exp_attrs} 
+
       loss = protos.crit:forward(logprobs, data.labels)
       loss_sum = loss_sum + loss
       loss_evals = loss_evals + 1
@@ -132,7 +146,7 @@ local function eval_split(split, evalopt)
 
     -- forward the model to also get generated samples for each image
     local sample_opts = { sample_max = opt.sample_max, beam_size = opt.beam_size, temperature = opt.temperature }
-    local seq = protos.lm:sample(feats, sample_opts)
+    local seq = protos.lm:sample({feats, data.semantic_words}, sample_opts)
     local sents = net_utils.decode_sequence(vocab, seq)
     for k=1,#sents do
       
