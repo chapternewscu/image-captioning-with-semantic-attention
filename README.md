@@ -4,22 +4,6 @@
 ### without regularization on attention weights
 current result
 
-* beamsize = 3: 
-* [ ] `Bleu_1 : 0.891`
-* [ ] `Bleu_2 : 0.739`
-* [ ] `Bleu_3 : 0.597`
-* [ ] `Bleu_4 : 0.479`
-* [ ] `ROUGE_L : 0.622`
-* [ ] `METEOR : 0.311`
-* [ ] `CIDEr : 1.239`
-* beamsize = 4: 
-* [ ]  `Bleu_1 : 0.891`
-* [ ]  `Bleu_2 : 0.742`
-* [ ]  `Bleu_3 : 0.601`
-* [ ]  `Bleu_4 : 0.484`
-* [ ]  `ROUGE_L : 0.625`
-* [ ]  `METEOR : 0.312`
-* [ ]  `CIDEr : 1.244`
 * beamsize = 5: 
 * [ ] `Bleu_1 : 0.892`
 * [ ] `Bleu_2 : 0.743`
@@ -28,26 +12,14 @@ current result
 * [ ] `ROUGE_L : 0.627`
 * [ ] `METEOR : 0.313`
 * [ ] `CIDEr : 1.249`
-* beamsize = 5 
-
 
 |beam_size | Bleu_1        |Bleu_2    |Bleu_3 |Bleu_4 |METEOR |  CIDEr|
 | ------------- |:-------------:| :-------------:|:-------------:|:-------------:|:-------------:|-----:|
 | 2      | 0.884 | 0.726 |0.58 |0.46 |0.308 |1.214 |
-| 2      | 0.884 | 0.726 |0.58 |0.46 |0.308 |1.214 |
-| 2      | 0.884 | 0.726 |0.58 |0.46 |0.308 |1.214 |
-| 2      | 0.884 | 0.726 |0.58 |0.46 |0.308 |1.214 |
-| 3      | centered      |   $12 |
-| 4 | are neat      |    $1 |
-
-
-| Tables        | Are           | Cool  |
-| ------------- |:-------------:| -----:|
-| col 3 is      | right-aligned | $1600 |
-| col 2 is      | centered      |   $12 |
-| zebra stripes | are neat      |    $1 |
-
-
+| 3      | 0.891 | 0.739 | 0.597 |0.479 |0.311 |1.239 |
+| 4      | 0.891 | 0.742 |0.601 |0.484 |0.312 |1.244 |
+| 5      | 0.892 | 0.743 |0.603 |0.488 |0.313 |1.249 |
+| 7      | 0.893 | 0.744 |0.605 |0.489 |0.313 |1.25 |
 
 ### with regularization on attention weights
 current result: to be updated..
