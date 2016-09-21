@@ -1,6 +1,6 @@
 
 # Image caption with semantic attention 
-### note that this repository are mainly borrowed from [neuraltalk2](https://github.com/karpathy/neuraltalk2), hats off to Karpathy, what a great job he has done!
+### note that this repository are mainly borrowed from [neuraltalk2](https://github.com/karpathy/neuraltalk2), hats off to Karpathy, what a great job he has done! And the model implemented here is from [image caption with semantic attention](http://www.cv-foundation.org/openaccess/content_cvpr_2016/papers/You_Image_Captioning_With_CVPR_2016_paper.pdf), Quanzeng You et al. CVPR2016.
 ### without regularization on attention weights
 beam_size = 8 
 {
