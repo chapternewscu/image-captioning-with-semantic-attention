@@ -26,6 +26,15 @@ current result
 * [ ]  ROUGE_L : 0.625
 * [ ]  METEOR : 0.312
 * [ ]  CIDEr : 1.244
+* beamsize = 5: 
+* [ ] Bleu_1 : 0.892
+* [ ] Bleu_2 : 0.743
+* [ ] Bleu_3 : 0.603
+* [ ] Bleu_4 : 0.488
+* [ ] ROUGE_L : 0.627
+* [ ] METEOR : 0.313
+* [ ] CIDEr : 1.249
+
 
 
 
