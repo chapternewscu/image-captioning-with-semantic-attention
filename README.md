@@ -3,13 +3,7 @@
 ### note that this repository are mainly borrowed from [neuraltalk2](https://github.com/karpathy/neuraltalk2), hats off to Karpathy, what a great job he has done!
 ### without regularization on attention weights
 current result
-* beamsize = 2
-* [ ]    `B-1: 0.884`
-* [ ]    `B-2: 0.726`
-* [ ]    `B-3: 0.58`
-* [ ]    `B-4: 0.46`
-* [ ]    `METEOR: 0.308`
-* [ ]    `CIDEr: 1.214`
+
 * beamsize = 3: 
 * [ ] `Bleu_1 : 0.891`
 * [ ] `Bleu_2 : 0.739`
@@ -34,7 +28,24 @@ current result
 * [ ] `ROUGE_L : 0.627`
 * [ ] `METEOR : 0.313`
 * [ ] `CIDEr : 1.249`
+* beamsize = 5 
 
+
+|beam_size | Bleu_1        |Bleu_2    |Bleu_3 |Bleu_4 |METEOR |  CIDEr|
+| ------------- |:-------------:| :-------------:|:-------------:|:-------------:|:-------------:|-----:|
+| 2      | 0.884 | 0.726 |0.58 |0.46 |0.308 |1.214 |
+| 2      | 0.884 | 0.726 |0.58 |0.46 |0.308 |1.214 |
+| 2      | 0.884 | 0.726 |0.58 |0.46 |0.308 |1.214 |
+| 2      | 0.884 | 0.726 |0.58 |0.46 |0.308 |1.214 |
+| 3      | centered      |   $12 |
+| 4 | are neat      |    $1 |
+
+
+| Tables        | Are           | Cool  |
+| ------------- |:-------------:| -----:|
+| col 3 is      | right-aligned | $1600 |
+| col 2 is      | centered      |   $12 |
+| zebra stripes | are neat      |    $1 |
 
 
 
