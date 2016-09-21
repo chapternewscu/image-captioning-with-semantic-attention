@@ -1,6 +1,6 @@
 
 # Image caption with semantic attention 
-### note that this repositories are mainly borrowed from [neuraltalk2](https://github.com/karpathy/neuraltalk2), hats off to Karpathy, what a great job he has done!
+### note that this repository are mainly borrowed from [neuraltalk2](https://github.com/karpathy/neuraltalk2), hats off to Karpathy, what a great job he has done!
 ### without regularization on attention weights
 current result
 * beamsize = 2
