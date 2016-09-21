@@ -2,7 +2,18 @@
 # Image caption with semantic attention 
 ### note that this repository are mainly borrowed from [neuraltalk2](https://github.com/karpathy/neuraltalk2), hats off to Karpathy, what a great job he has done!
 ### without regularization on attention weights
-current result
+beam_size = 8 
+{
+  Bleu_1 : 0.893
+  ROUGE_L : 0.629
+  METEOR : 0.313
+  Bleu_4 : 0.49
+  Bleu_3 : 0.605
+  Bleu_2 : 0.744
+  CIDEr : 1.25
+}
+
+current results table
 
 |beam_size | Bleu_1        |Bleu_2    |Bleu_3 |Bleu_4 |METEOR |  CIDEr|
 | ------------- |:-------------:| :-------------:|:-------------:|:-------------:|:-------------:|-----:|
