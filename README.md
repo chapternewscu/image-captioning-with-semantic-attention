@@ -4,15 +4,6 @@
 ### without regularization on attention weights
 current result
 
-* beamsize = 5: 
-* [ ] `Bleu_1 : 0.892`
-* [ ] `Bleu_2 : 0.743`
-* [ ] `Bleu_3 : 0.603`
-* [ ] `Bleu_4 : 0.488`
-* [ ] `ROUGE_L : 0.627`
-* [ ] `METEOR : 0.313`
-* [ ] `CIDEr : 1.249`
-
 |beam_size | Bleu_1        |Bleu_2    |Bleu_3 |Bleu_4 |METEOR |  CIDEr|
 | ------------- |:-------------:| :-------------:|:-------------:|:-------------:|:-------------:|-----:|
 | 2      | 0.884 | 0.726 |0.58 |0.46 |0.308 |1.214 |
