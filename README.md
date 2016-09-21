@@ -19,21 +19,21 @@ current result
 * [ ] `METEOR : 0.311`
 * [ ] `CIDEr : 1.239`
 * beamsize = 4: 
-* [ ]  Bleu_1 : 0.891
-* [ ]  Bleu_2 : 0.742
-* [ ]  Bleu_3 : 0.601
-* [ ]  Bleu_4 : 0.484
-* [ ]  ROUGE_L : 0.625
-* [ ]  METEOR : 0.312
-* [ ]  CIDEr : 1.244
+* [ ]  `Bleu_1 : 0.891`
+* [ ]  `Bleu_2 : 0.742`
+* [ ]  `Bleu_3 : 0.601`
+* [ ]  `Bleu_4 : 0.484`
+* [ ]  `ROUGE_L : 0.625`
+* [ ]  `METEOR : 0.312`
+* [ ]  `CIDEr : 1.244`
 * beamsize = 5: 
-* [ ] Bleu_1 : 0.892
-* [ ] Bleu_2 : 0.743
-* [ ] Bleu_3 : 0.603
-* [ ] Bleu_4 : 0.488
-* [ ] ROUGE_L : 0.627
-* [ ] METEOR : 0.313
-* [ ] CIDEr : 1.249
+* [ ] `Bleu_1 : 0.892`
+* [ ] `Bleu_2 : 0.743`
+* [ ] `Bleu_3 : 0.603`
+* [ ] `Bleu_4 : 0.488`
+* [ ] `ROUGE_L : 0.627`
+* [ ] `METEOR : 0.313`
+* [ ] `CIDEr : 1.249`
 
 
 
