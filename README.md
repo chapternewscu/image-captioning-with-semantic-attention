@@ -4,20 +4,20 @@
 ### without regularization on attention weights
 current result
 * beamsize = 2
-*    B-1: 0.884
-*    B-2: 0.726
-*    B-3: 0.58
-*    B-4: 0.46
-*    METEOR: 0.308
-*    CIDEr: 1.214
+* [ ]    B-1: 0.884
+* [ ]    B-2: 0.726
+* [ ]    B-3: 0.58
+* [ ]    B-4: 0.46
+* [ ]    METEOR: 0.308
+* [ ]    CIDEr: 1.214
 * beamsize = 3: 
-*  Bleu_1 : 0.891
-*  ROUGE_L : 0.622
-*  METEOR : 0.311
-*  Bleu_4 : 0.479
-*  Bleu_3 : 0.597
-*  Bleu_2 : 0.739
-*  CIDEr : 1.239
+* [ ] Bleu_1 : 0.891
+* [ ] ROUGE_L : 0.622
+* [ ] METEOR : 0.311
+* [ ] Bleu_4 : 0.479
+* [ ] Bleu_3 : 0.597
+* [ ] Bleu_2 : 0.739
+* [ ] CIDEr : 1.239
 
 
 
