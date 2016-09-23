@@ -16,6 +16,7 @@ current results table
 ### with regularization on attention weights
 current result: to be updated..
 L1 loss on output attention weights(seems not improve too much):
+
 |beam_size | Bleu_1        |Bleu_2    |Bleu_3 |Bleu_4 |METEOR |  CIDEr|
 | ------------- |:-------------:| :-------------:|:-------------:|:-------------:|:-------------:|-----:|
 | 7      | 0.898 | 0.751 |0.614 |0.498 |0.315 |1.26 |
