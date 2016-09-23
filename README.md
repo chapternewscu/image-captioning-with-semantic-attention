@@ -2,16 +2,6 @@
 # Image caption with semantic attention 
 ### note that this repository are mainly borrowed from [neuraltalk2](https://github.com/karpathy/neuraltalk2), hats off to Karpathy, what a great job he has done! And the model implemented here is from [image caption with semantic attention](http://www.cv-foundation.org/openaccess/content_cvpr_2016/papers/You_Image_Captioning_With_CVPR_2016_paper.pdf), Quanzeng You et al. CVPR2016.
 ### without regularization on attention weights
-beam_size = 8 
-{
-  Bleu_1 : 0.893
-  ROUGE_L : 0.629
-  METEOR : 0.313
-  Bleu_4 : 0.49
-  Bleu_3 : 0.605
-  Bleu_2 : 0.744
-  CIDEr : 1.25
-}
 
 current results table
 
@@ -25,6 +15,13 @@ current results table
 
 ### with regularization on attention weights
 current result: to be updated..
+L1 loss on output attention weights(seems not improve too much):
+|beam_size | Bleu_1        |Bleu_2    |Bleu_3 |Bleu_4 |METEOR |  CIDEr|
+| ------------- |:-------------:| :-------------:|:-------------:|:-------------:|:-------------:|-----:|
+| 7      | 0.898 | 0.751 |0.614 |0.498 |0.315 |1.26 |
+
+Attention Weights Criterion on attention weights(to be updated):
+
 * (may add comment later, below is the comment from neuraltalk2, shoule remove it in the near future)
 
 
