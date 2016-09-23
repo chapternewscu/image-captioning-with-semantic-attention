@@ -9,7 +9,7 @@ local Attention_Weights_Criterion, parent = torch.class('nn.Attention_Weights_Cr
 function  Attention_Weights_Criterion:__init(eps) 
     parent.__init(self)
     -- it is very import to avoid dividing zero problem 
-    self.eps = eps or 1e-5 -- by default self.alpha is set to be 0.01 
+    self.eps = eps or 1e-3 -- by default self.alpha is set to be 0.01 
 end 
 
 
