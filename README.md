@@ -23,6 +23,11 @@ L1 loss on output attention weights(seems not improve too much):
 
 Attention Weights Criterion on attention weights(to be updated):
 
+only regularization at output attention model:
+
+|beam_size | Bleu_1        |Bleu_2    |Bleu_3 |Bleu_4 |METEOR |  CIDEr|
+| ------------- |:-------------:| :-------------:|:-------------:|:-------------:|:-------------:|-----:|
+| 7      | 0.90 | 0.754 |0.615 |0.498 |0.314 |1.258 |
 * (may add comment later, below is the comment from neuraltalk2, shoule remove it in the near future)
 
 
