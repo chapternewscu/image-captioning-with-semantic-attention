@@ -4,11 +4,11 @@ require 'nngraph'
 -- exotics
 require 'loadcaffe'
 -- local imports
-local utils = require 'misc_saver.utils'
-require 'misc_saver.DataLoader'
-require 'misc_saver.DataLoaderRaw'
-require 'misc_saver.LanguageModel'
-local net_utils = require 'misc_saver.net_utils'
+local utils = require 'misc_saver2_reg_atten_ws.utils'
+require 'misc_saver2_reg_atten_ws.DataLoader'
+require 'misc_saver2_reg_atten_ws.DataLoaderRaw'
+require 'misc_saver2_reg_atten_ws.LanguageModel'
+local net_utils = require 'misc_saver2_reg_atten_ws.net_utils'
 
 -------------------------------------------------------------------------------
 -- Input arguments and options
@@ -30,7 +30,7 @@ cmd:option('-dump_json', 0, 'Dump json with predictions into vis folder? (1=yes,
 cmd:option('-dump_path', 0, 'Write image paths along with predictions into vis json? (1=yes,0=no)')
 -- Sampling options
 cmd:option('-sample_max', 1, '1 = sample argmax words. 0 = sample from distributions.')
-cmd:option('-beam_size', 3, 'used when sample_max = 1, indicates number of beams in beam search. Usually 2 or 3 works well. More is not better. Set this to 1 for faster runtime but a bit worse performance.')
+cmd:option('-beam_size', 7, 'used when sample_max = 1, indicates number of beams in beam search. Usually 2 or 3 works well. More is not better. Set this to 1 for faster runtime but a bit worse performance.')
 cmd:option('-temperature', 1.0, 'temperature when sampling from distributions (i.e. when sample_max = 0). Lower = "safer" predictions.')
 -- For evaluation on a folder of images:
 cmd:option('-image_folder', '', 'If this is nonempty then will predict on the images in this folder path')
