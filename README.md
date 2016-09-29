@@ -23,15 +23,12 @@ L1 loss on output attention weights(seems not improve too much):
 
 Attention Weights Criterion on attention weights(however, not finetuning on cnn part):
 
-regularization attention model(currently, the results is follows, but i kinda of forget to finetune 
-cnn, so i am doing it right now, hopefully, the results may be very promissing, to be updated):
+regularization attention model:
 
 |beam_size | Bleu_1        |Bleu_2    |Bleu_3 |Bleu_4 |METEOR |  CIDEr|
 | ------------- |:-------------:| :-------------:|:-------------:|:-------------:|:-------------:|-----:|
-| 7      | 0.902 | 0.756 |0.618 |0.501 |0.318 |1.281 |
+| 7      | 0.905 | 0.759 |0.622 |0.506 |0.321 |1.3 |
 * (may add comment later, below is the comment from neuraltalk2, shoule remove it in the near future)
-
-
 
 ### Requirements
 
